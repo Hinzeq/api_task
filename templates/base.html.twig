@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include "static/header.twig" %}
+        <title>{% block title %}Welcome!{% endblock %}</title>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        {% include "static/nav.twig" %}
+
+        {% if status is defined %}
+            {% if status.stat == true %}
+                <span class="status-wiadomosc text-center border border-success fixed-top bg-success text-white">{{ status.message }}</span>
+            {% elseif status.stat == false %}
+                <span class="status-wiadomosc text-center border border-danger fixed-top bg-danger text-white">{{ status.message }}</span>
+            {% endif %}
+        {% endif %}
+
+        <div class="container">
+            <div class="text-center mt-5">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+
+        {% include "static/footer.twig" %}
+        
+        {% include "static/scripts.twig" %}
+    </body>
+</html>

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add new user{% endblock %}
+
+{% block body %}
+
+<form method="POST">
+    <h3>Add new user</h3>
+
+    <div class="container">
+        <div class="row">  
+            <div class="col-sm">
+                <div class="form-group text-left">
+                    <label for="email">Email address:</label>
+                    <input type="email" id="email" class="form-control" placeholder="Email" name="email" required>
+                </div>
+            </div>
+
+            <div class="col-sm">
+                <div class="form-group text-left">
+                    <label for="first_name">First name:</label>
+                    <input type="text" id="first_name" class="form-control" placeholder="First name" name="first_name" required>
+                </div>
+            </div>
+
+            <div class="col-sm">
+                <div class="form-group text-left">
+                    <label for="last_name">Last name:</label>
+                    <input type="text" id="last_name" class="form-control" placeholder="Last name" name="last_name" required>
+                </div>
+            </div>
+
+            <div class="col-sm">
+                <div class="form-group text-left">
+                    <label for="avatar">Avatar (url):</label>
+                    <input type="text" id="avatar" class="form-control" placeholder="Avatar" name="avatar" required>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="float-right">
+        <button type="submit" id="edit-button" class="filtr-button btn btn-primary" data-dismiss="modal">Dodaj</button>
+    </div>
+</form>
+
+{% endblock %}

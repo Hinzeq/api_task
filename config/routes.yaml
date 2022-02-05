@@ -1,3 +1,14 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+user_list:
+   path: /
+   controller: App\Controller\UserController::getList
+   methods: GET
+
+user_add_get:
+   path: /add
+   controller: App\Controller\UserController::getAdd
+   methods: GET
+
+user_add_post:
+   path: /add
+   controller: App\Controller\UserController::addNewUser
+   methods: POST

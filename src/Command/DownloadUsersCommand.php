@@ -19,7 +19,7 @@ use Doctrine\ORM\EntityManagerInterface;
 )]
 class DownloadUsersCommand extends Command
 {
-    protected $page;
+    private $page;
 
     private $entityManager;
 
@@ -60,38 +60,42 @@ class DownloadUsersCommand extends Command
 
         $json = json_decode($response);
 
-        $i = 0;
-        $em = $this->entityManager;
-        $current_users = $em->getRepository(UserEntity::class)->findAll();
-        $id_list = [];
+        if(!empty($json->data)) {
+            $i = 0;
+            $em = $this->entityManager;
+            $current_users = $em->getRepository(UserEntity::class)->findAll();
+            $id_list = [];
 
-        foreach($current_users as $user) {
-            $id_list[] = $user->getId();
-        }
+            foreach($current_users as $user) {
+                $id_list[] = $user->getId();
+            }
 
-        foreach($json->data as $user) {
-            if(!empty($current_users) && in_array((int)$user->id, $id_list))
-                continue;
-
-            $new_user = new UserEntity();
-            $new_user->setId((int)$user->id);
-            $new_user->setEmail($user->email);
-            $new_user->setFirstName($user->first_name);
-            $new_user->setLastName($user->last_name);
-            $new_user->setAvatar($user->avatar);
-
-            try {
-                $em->persist($new_user);
-                $em->flush();
-                $i++;
-            } catch(Exception $e) {
-                // logs
+            foreach($json->data as $user) {
+                if(!empty($current_users) && in_array((int)$user->id, $id_list))
+                    continue;
+    
+                $new_user = new UserEntity();
+                $new_user->setId((int)$user->id);
+                $new_user->setEmail($user->email);
+                $new_user->setFirstName($user->first_name);
+                $new_user->setLastName($user->last_name);
+                $new_user->setAvatar($user->avatar);
+    
+                try {
+                    $em->persist($new_user);
+                    $em->flush();
+                    $i++;
+                } catch(Exception $e) {
+                    // logs
+                }
             }
         }
-
+        
         $io = new SymfonyStyle($input, $output);
 
-        if($i == 0) 
+        if(empty($json->data)) {
+            $io->note("This endpoint contains null data!");
+        } elseif($i == 0) 
             $io->note("All users with this id numbers are existing!");
         else 
             $io->success("Added {$i} users");     
