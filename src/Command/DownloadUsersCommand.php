@@ -96,7 +96,7 @@ class DownloadUsersCommand extends Command
         if(empty($json->data)) {
             $io->note("This endpoint contains null data!");
         } elseif($i == 0) 
-            $io->note("All users with this id numbers are existing!");
+            $io->note("All users with these id numbers are existing!");
         else 
             $io->success("Added {$i} users");     
 
