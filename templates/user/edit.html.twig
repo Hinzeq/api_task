@@ -12,35 +12,35 @@
             <div class="col-sm">
                 <div class="form-group text-left">
                     <label for="email">Email address:</label>
-                    <input type="email" id="email" class="form-control" placeholder="Email" name="email" required>
+                    <input type="email" id="email" class="form-control" placeholder="Email" name="email" required value="{{ user.email }}">
                 </div>
             </div>
 
             <div class="col-sm">
                 <div class="form-group text-left">
                     <label for="first_name">First name:</label>
-                    <input type="text" id="first_name" class="form-control" placeholder="First name" name="first_name" required>
+                    <input type="text" id="first_name" class="form-control" placeholder="First name" name="first_name" required value="{{ user.first_name }}">
                 </div>
             </div>
 
             <div class="col-sm">
                 <div class="form-group text-left">
                     <label for="last_name">Last name:</label>
-                    <input type="text" id="last_name" class="form-control" placeholder="Last name" name="last_name" required>
+                    <input type="text" id="last_name" class="form-control" placeholder="Last name" name="last_name" required value="{{ user.last_name }}">
                 </div>
             </div>
 
             <div class="col-sm">
                 <div class="form-group text-left">
                     <label for="avatar">Avatar (url):</label>
-                    <input type="text" id="avatar" class="form-control" placeholder="Avatar" name="avatar" required>
+                    <input type="text" id="avatar" class="form-control" placeholder="Avatar" name="avatar" required value="{{ user.avatar }}">
                 </div>
             </div>
         </div>
     </div>
 
     <div class="float-right">
-        <button type="submit" id="edit-button" class="filtr-button btn btn-primary" data-dismiss="modal">Add</button>
+        <button type="submit" id="edit-button" class="filtr-button btn btn-primary" data-dismiss="modal">Edit</button>
     </div>
 </form>
 

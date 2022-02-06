@@ -1,3 +1,3 @@
 setTimeout(function(){
-    $('.status-wiadomosc').remove();
+    $('.status-message').remove();
 }, 2000);

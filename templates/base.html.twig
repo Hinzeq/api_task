@@ -8,10 +8,12 @@
         {% include "static/nav.twig" %}
 
         {% if status is defined %}
-            {% if status.stat == true %}
-                <span class="status-wiadomosc text-center border border-success fixed-top bg-success text-white">{{ status.message }}</span>
-            {% elseif status.stat == false %}
-                <span class="status-wiadomosc text-center border border-danger fixed-top bg-danger text-white">{{ status.message }}</span>
+            {% if status.stat == 'success' %}
+                <span class="status-message text-center border border-success fixed-top bg-success text-white">{{ status.message }}</span>
+            {% elseif status.stat == 'failure' %}
+                <span class="status-message text-center border border-danger fixed-top bg-danger text-white">{{ status.message }}</span>
+            {% elseif status.stat == 'skip' %}
+                <span></span>
             {% endif %}
         {% endif %}
 

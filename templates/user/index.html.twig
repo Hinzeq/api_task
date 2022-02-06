@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Users List{% endblock %}
+{% block title %}Users list{% endblock %}
 
 {% block body %}
 
@@ -14,6 +14,7 @@
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
                     <th scope="col">Avatar</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -25,6 +26,10 @@
                         <td>{{ user.last_name }}</td>
                         <td>
                             <img src="{{ user.avatar }}" alt="{{ user.avatar }}">
+                        </td>
+                        <td>
+                            <a href="{{ url('user_edit_get', {id: user.id}) }}" class="btn btn-primary">Edit</a>
+                            <a href="{{ url('user_delete', {id: user.id}) }}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 {% endfor %}

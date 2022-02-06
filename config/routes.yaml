@@ -12,3 +12,18 @@ user_add_post:
    path: /add
    controller: App\Controller\UserController::addNewUser
    methods: POST
+
+user_edit_get:
+   path: /edit/{id}
+   controller: App\Controller\UserController::getUserEdit
+   methods: GET
+
+user_edit_post:
+   path: /edit/{id}
+   controller: App\Controller\UserController::editUser
+   methods: POST
+
+user_delete:
+   path: /delete/{id}
+   controller: App\Controller\UserController::deleteUser
+   methods: GET
